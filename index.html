@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AhorrADAs</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="estilo.css"> -->
+    <script src="https://kit.fontawesome.com/fc20ae3cbb.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/ico" href="favicon/beneficios.png" />
+    
+</head>
+
+<body>
+
+    <!-- SECCION NAV MAIN -->
+
+    <nav class="navbar  is-primary is-spaced" aria-label="Barra de navegacion">
+        <div class="navbar-brand">
+            <!-- Icono izquierda ahorradas -->
+            <a class="navbar-item" href="index.html">
+                <h1 class="title is-2 has-text-white is-family-secondary">
+                    <i class="fas fa-wallet mr-2"></i> AhorrADAs
+                </h1>
+            </a>
+            <div id="navbar-burger" class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+        <!-- botones derecho -->
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+                <a id="boton-balance" class="  navbar-item ">
+                    <i class="fas fa-chart-line mr-2 "></i> Balance
+                </a>
+
+                <a id="boton-categorias" class="navbar-item">
+                    <i class="fas fa-tag mr-2 "></i> Categorías
+                </a>
+
+                <a id="boton-reportes" class=" navbar-item">
+                    <i class="fas fa-chart-pie mr-2 "></i> Reportes
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-----------------------------------------------------------------------------------
+        SECCION CENTRAL
+    ------------------------------------------------------------------------------------>
+    <div class="hero has-background-light  is-fullheight">
+        <section id="seccion-central" class="section">
+            <div class="conteiner">
+                <div class="columns is-multiline">
+
+                    <!-- Box Balance -->
+                    <div class=" column is-offset-1-desktop is-3-desktop is-12-tablet">
+
+                        <div class="box">
+                            <h2 class="title has-text-weight-bold has-text-grey-dark mb-6">Balance</h2>
+
+                            <div class="columns is-mobile is-multiline">
+                                <div class="column is-size-5">Ganancias </div>
+                                <div class="column has-text-success has-text-right sumaGanancias">+$0</div>
+                            </div>
+                            <div class="columns is-mobile is-multiline">
+                                <div class="column is-size-5">Gastos </div>
+                                <div class="column has-text-danger has-text-right sumaGastos">-$0</div>
+                            </div>
+                            <div class="columns is-mobile is-multiline">
+                                <div class="column is-size-4">Total </div>
+                                <div class="column has-text-weight-bold has-text-right totalBalances">$0</div>
+                            </div>
+                        </div>
+
+                        <!-- Box Filtros -->
+                        <article class="box">
+                            <div class="columns">
+                                <h2 class="title column is-5 has-text-weight-bold has-text-grey-dark">Filtros</h2>
+                                <button class="button  column has-text-right is-info is-inverted " id="boton-ocultar-filtros">Ocultar filtros</button>
+                            </div>
+                            <form id="form">
+                                <!-- Select Tipo  -->
+                                <div class="field" id="div-formulario-filtros">
+                                    <label class="label" for="select-tipo">Tipo</label>
+                                    <div class="select is-fullwidth ">
+                                        <select id="select-tipo">
+                                         <option value="Todos">Todos</option>
+                                         <option value="gastos">Gasto</option>
+                                         <option value="ganancias">Ganancia</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <!-- Select Categoría -->
+                                <div class="field">
+                                    <label class="label" for="select-categoria">Categoría</label>
+                                    <div class="select is-fullwidth  ">
+                                        <select id="select-categoria">
+                                         <option>Todas</option>
+                                         <option>Comida</option>
+                                         <option>Servicios</option>
+                                         <option>Salidas</option>
+                                         <option>Educación</option>
+                                         <option>Transporte</option>
+                                         <option>Trabajo</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <!-- Seleccion de fecha -->
+                                <div class="field">
+                                    <label class="label" for="date">Desde</label>
+                                    <div class="control">
+                                        <input class="input" id="date" type="date">
+                                    </div>
+                                </div>
+
+
+                                <!-- Select Ordenar por -->
+                                <div class="field">
+                                    <label class="label" for="select-odenar">Ordenar por</label>
+                                    <div class="select is-fullwidth  ">
+                                        <select id="select-ordenar">
+                                         <option value="Más reciente">Más reciente</option>
+                                         <option value="Menos reciente">Menos reciente</option>
+                                         <option value="Mayor monto">Mayor monto</option>
+                                         <option value="Menor monto">Menor monto</option>
+                                         <option value="A/Z">A/Z</option>
+                                         <option value="Z/A">Z/A</option>
+                                    </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </article>
+                    </div>
+
+                    <!-- Box Operaciones -->
+                    <div class="column is-7-desktop is-12-tablet">
+                        <div class="box" id="div-operaciones">
+                            <div id="tarjeta-operacion-con-botones">
+
+                                <div class="columns is-mobile is-multiline">
+                                    <h2 class="title column is-size-4 has-text-weight-bold has-text-grey-dark  is-narrow-mobile ">Operaciones</h2>
+                                    <div class="column  has-text-right  is-narrow-mobile ">
+                                        <button id="boton-nueva-operacion" class="button is-primary ">+ Nueva operación</button>
+                                    </div>
+                                </div>
+                                <div id="tarjeta-sin-operaciones">
+                                    <div class="columns my-5">
+                                        <!-- Funcion de lo que aparece cuando se agrega una operacion -->
+                                        <figure class="image column is-offset-3 is-6">
+                                            <img aria-hidden="true" src="imagenes/undraw_Pie_chart_re_bgs8.svg">
+
+                                        </figure>
+                                    </div>
+                                    <div class="columns">
+                                        <div class="column">
+                                            <p class=" has-text-centered is-size-4 has-text-weight-semibold has-text-grey-dark">Sin resultados</p>
+                                            <p class=" has-text-centered">Cambia los filtros o agrega operaciones</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Tarjeta de operaciones que ya se agregaron -->
+                                <div id="contenedor-operaciones-agregadas" class="column is-relative">
+
+                                    <div class="columns  is-hidden-mobile is-multiline is-relative">
+                                        <div class="column ">Descripción</div>
+                                        <div class="column ">Categoría</div>
+                                        <div class="column">Fecha</div>
+                                        <div class="column">Monto</div>
+                                        <div class="column ">Acciones</div>
+                                    </div>
+                                    <div>
+                                        <div id="tarjeta-operaciones-agregadas"></div>
+                                    </div>
+                                </div>
+                                <!-- Tarjeta de operaciones que ya se agregaron -->
+                                <div id="contenedor-operaciones-agregadas" class="column"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!--Tarjeta de nueva operacion  -->
+        <section id="accion-boton-nueva-operacion" class=" columns m-5 is-hidden">
+            <div class="box column is-8 is-offset-2">
+                <h2 class="title is-size-2 has-text-weight-bold has-text-black-ter my-5">Nueva operación</h2>
+
+
+                <form>
+                    <div class="field">
+                        <label class="label" for="descripcion-nueva-operacion">Descripcion</label>
+                        <input class="input" type="text" id="descripcion-nueva-operacion">
+                    </div>
+                    <div class="field">
+                        <label class="label" for="monto-nueva-operacion">Monto</label>
+                        <input class="input" type="number" id="monto-nueva-operacion" value="0">
+                    </div>
+                    <div class="field">
+                        <label class="label" for="select-tipo-nueva-operacion">Tipo</label>
+                        <div class="select is-fullwidth ">
+                            <select id="select-tipo-nueva-operacion"> 
+                                    <option value="gastos">Gasto</option>
+                                    <option value="ganancias">Ganancia</option>
+                                </select>
+                        </div>
+
+
+                    </div>
+                    <div class="field">
+                        <label class="label" for="select-categoria-nueva-operacion">Categoría</label>
+                        <div class="select is-fullwidth  ">
+                            <select id="select-categoria-nueva-operacion">                        
+                                                    <option>Comida</option>
+                                                    <option>Servicios</option>
+                                                    <option>Salidas</option>
+                                                    <option>Educación</option>
+                                                    <option>Transporte</option>
+                                                    <option>Trabajo</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="dateNuevaOperacion">Desde</label>
+                        <div class="control">
+                            <input class="input" id="dateNuevaOperacion" type="date">
+                        </div>
+                    </div>
+                </form>
+                <div class="column has-text-right">
+                    <button class="button mt-5 is-light" id="boton-cancelar-operacion">Cancelar</button>
+                    <button class="button mt-5 is-success" id="boton-agregar-operacion">Agregar</button>
+                </div>
+            </div>
+
+        </section>
+        <!-----------------------------------------------------------------------------------
+            SECCION CATEGORIAS
+        ------------------------------------------------------------------------------------>
+        <section class="section is-hidden is-relative" id="seccion-categorias">
+
+            <div class="conteiner">
+                <div class=" column is-offset-2-desktop is-8-desktop is-12-tablet">
+
+                    <div class="box ">
+                        <h2 class="title has-text-weight-bold has-text-grey-dark mb-6">Categorías</h2>
+
+                        <label class="label " for="username">Nombre</label>
+                        <div class="field is-grouped">
+                            <div class="control is-expanded ">
+                                <input id="input-categorias-nuevo-nombre" class="input " id="username" type="text">
+                            </div>
+                            <div class="control">
+                                <button id="agregar-categoria-boton" class="button is-success">Agregar</button>
+                            </div>
+
+                        </div>
+                        <div id="lista-categoria">
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </section>
+        <!-- tarjeta editar categoria -->
+        <div class="section tarjeta-editar-categoria  is-hidden">
+            <div class="column is-offset-2 is-8">
+                <div class="box ">
+                    <h2 class="title has-text-weight-bold has-text-grey-dark mb-6">Editar categoría</h2>
+                    <div class="field">
+                        <label class="label " for="username">Nombre</label>
+                        <div class="columns">
+                            <div class="control column is-12">
+                                <div>
+                                    <input class="input input-categorias-nombre-editar" value="" id="username" type="text">
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="has-text-right">
+                            <button class="button is-light boton-cancelar-categoria-editada">Cancelar</button>
+                            <button class="button is-success boton-editar-categoria-editada">Editar</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--------------------------------------------------------- 
+
+
+    TARJETA BOTON EDITAR SECCION PRINCIPAL- brenda
+--------------------------------------------------------->
+        <div class="section form-tarjeta-editar-operacion is-hidden">
+
+        </div>
+
+
+        <!--------------------------------------------------------- 
+                      SECCIÓN REPORTES
+--------------------------------------------------------->
+        <!-- Seccion reportes -->
+        <section id="seccion-reportes" class="section m-1 is-hidden ">
+            <div class="column  is-8 is-offset-2">
+                <div class="box">
+                    <div class="columns">
+                        <h2 class="title column is-size-2 has-text-weight-bold ">Reportes</h2>
+                    </div>
+                    <!-- Este div contiene la imagen y aparece cuando no hay ninguna operacion -->
+                    <div class="is-hidden  is-relative is-hidden" id="reportes-sin-operaciones">
+
+                        <div class="columns my-5 ">
+                            <figure class="image column is-offset-3 is-6">
+                                <img src="imagenes/undraw_investment_data_re_sh9x.svg">
+                            </figure>
+                        </div>
+
+                        <div class="columns">
+                            <p class="column has-text-centered is-size-4 has-text-weight-semibold has-text-grey-dark">Operaciones insuficientes</p>
+                        </div>
+
+
+                        <div class="columns mb-6">
+                            <p class="column has-text-centered">Prueba agregando más operaciones</p>
+                        </div>
+                    </div>
+
+                    <!-- fin div que desaparece-->
+
+                    <!-- Este div contiene los reportes cuando ya tiene cargadas varias operaciones -->
+
+
+
+
+                    <!-- RESUMEN-->
+                    <section id="panel-estadisticas-reportes" class="is-hidden">
+                        <section id="seccion-resumen-reportes" class="resumen columns is-flex is-flex-direction-column block">
+                            <div class="column ">
+                                <h3 class="title is-size-4 column">Resumen</h3>
+                            </div>
+                            <div id="datos-resumen" class="column">
+                                <div class="columns">
+                                    <div class="column is-6 has-text-weight-semibold">Categoría con mayor ganancia</div>
+                                    <div class="column  has-text-right">Categoría</div>
+                                    <div class="column   has-text-right">Monto</div>
+                                </div>
+                                <div class="columns">
+                                    <div class="column is-6 has-text-weight-semibold">Categoría con mayor gasto</div>
+                                    <div class="column  has-text-right">Categoría</div>
+                                    <div class="column   has-text-right">Monto</div>
+                                </div>
+                                <div class="columns">
+                                    <div class="column is-6 has-text-weight-semibold">Categoría con mayor balance</div>
+                                    <div class="column  has-text-right">Categoría</div>
+                                    <div class="column   has-text-right">Monto</div>
+                                </div>
+                                <div class="columns">
+                                    <div class="column is-6 has-text-weight-semibold">Mes con mayor ganancia</div>
+                                    <div class="column  has-text-right">Fecha</div>
+                                    <div class="column   has-text-right">Monto</div>
+                                </div>
+                                <div class="columns">
+                                    <div class="column is-6 has-text-weight-semibold">Mes con mayor gasto</div>
+                                    <div class="column  has-text-right">Fecha</div>
+                                    <div class="column  has-text-right">Monto</div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- totales por categorias-->
+                        <section class="totales-por-categoria columns  is-flex is-flex-direction-column block">
+                            <div class="column block">
+                                <h3 class="title is-size-4">Totales por categorías</h3>
+
+                                <div class="column">
+                                    <div class="columns  is-mobile">
+                                        <div class="column  has-text-weight-semibold ">Categoría</div>
+                                        <div class="column  has-text-weight-semibold has-text-right">Ganancias</div>
+                                        <div class="column  has-text-weight-semibold has-text-right">Gastos</div>
+                                        <div class="column  has-text-weight-semibold has-text-right">Balances</div>
+                                    </div>
+                                    <div id="datos-reportes-por-categorias">
+                                        <div class="columns  is-mobile">
+                                            <div class="column  is-light">Categoria</div>
+                                            <div class="column has-text-danger has-text-right">monto</div>
+                                            <div class="column has-text-success  has-text-right">monto</div>
+                                            <div class="column has-text-right">total</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- totales por mes-->
+                        <section class="resumen columns is-flex is-flex-direction-column ">
+                            <div class="column block">
+                                <h3 class="title is-size-4">Totales por mes</h3>
+                            </div>
+                            <div class="column">
+                                <div class="columns  is-mobile">
+                                    <div class="column  has-text-weight-semibold ">Mes</div>
+                                    <div class="column  has-text-weight-semibold has-text-right">Ganancias</div>
+                                    <div class="column  has-text-weight-semibold has-text-right">Gastos</div>
+                                    <div class="column  has-text-weight-semibold has-text-right">Balances</div>
+
+                                </div>
+
+                                <div>
+                                    <div class="columns  is-mobile">
+                                        <div class="column  has-text-weight-semibold">Categoria</div>
+                                        <div class="column  has-text-success has-text-right">monto</div>
+                                        <div class="column  has-text-danger  has-text-right">monto</div>
+                                        <div class="column  has-text-right">total</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                    <!-- fin div reportes con operaciones-->
+                </div>
+            </div>
+        </section>
+
+        <script src="index.js"></script>
+
+</body>
+
+</html>
