@@ -22,7 +22,7 @@ El sitio ofrece, además la posibilidad de acceder a las **estadísticas** de la
 -	**JavaScript**
  
 
-El proyecto puede visitarse [aqui](https://roci16.github.io/Ahorradas/index.html)
+El proyecto puede visitarse [aqui](https://florencialarreategui.github.io/AhorrADAs/)
 
  ### Realizado por:
 -	👧 Florencia Larreategui
